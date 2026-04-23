@@ -1,0 +1,64 @@
+﻿body.form-account-background {
+    background-image: url('../images/bgback.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    font-family: 'Ubuntu', sans-serif; 
+}
+
+
+.form-account-bg-form {
+    background: rgba(255, 255, 255, 0.9); 
+    border-radius: 10px; 
+    padding: 20px; 
+    max-width: 600px; 
+    margin: auto; 
+}
+
+main.form-account-padding {
+    padding-top: 40px; 
+    padding-bottom: 40px; 
+}
+
+h2.form-account-title {
+    margin-bottom: 20px; 
+    color: #000;
+    font-weight: bold;
+}
+
+
+
+.form-account-group {
+    margin-bottom: 15px; 
+}
+
+.form-account-success {
+    margin-top: 20px; 
+}
+.reg-frm-div, .login-form {
+    width: 100%;
+}
+.btn-reg {
+    text-align: center;
+}
+    .reg-frm-div .card {
+        background: #6a96af;
+        border-radius: 20px;
+        border: 1px solid #6a96af;
+        box-shadow: 0 0 1px #ffffff;
+    }
+        .reg-frm-div .card form .field-validation-error {
+            color: #aa0505 !important;
+        }
+        .reg-frm-div .card form {
+            background: transparent;
+            border: none;
+            border-radius: unset;
+            max-width: 100% !important;
+            width: 100%;
+            padding: 0;
+        }
+            @media (max-width: 576px) {
+                .col-md-4 {
+                    width: 100%; 
+                }
+            }

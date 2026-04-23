@@ -1,0 +1,13 @@
+﻿@if (Model > 0)
+{
+    <a class="nav-link" href="@Url.Action("UnresolvedAlerts", "Alert")" role="button">
+        <i class="fas fa-bell"></i>
+        <span class="badge bg-danger">@Model</span>  
+    </a>
+}
+else
+{
+    <a class="nav-link" href="@Url.Action("UnresolvedAlerts", "Alert")" role="button">
+        <i class="fas fa-bell"></i>
+    </a>
+}

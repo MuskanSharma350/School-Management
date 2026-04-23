@@ -1,0 +1,86 @@
+﻿@model SchoolManagementProject.ViewModels.EditUserViewModel
+@{
+    Layout = "_Dashboard";
+    ViewBag.PageTitle = "Users";
+    ViewBag.SubPageTitle = "Edit";
+    ViewData["Title"] = "Edit User";
+}
+
+<h2 class="headingClass">Edit User</h2>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger animate__animated animate__shakeX">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+<div class="card border-0 shadow-sm p-4" style="border-radius: 15px;">
+    <form id="editUserForm" asp-action="Edit" method="post">
+        @Html.AntiForgeryToken()
+        
+        <!-- Hidden field for User ID -->
+        <input type="hidden" asp-for="Id" />
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="FirstName" class="form-label fw-bold">First Name <span class="text-danger">*</span></label>
+                <input asp-for="FirstName" class="form-control" placeholder="Enter first name" required />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="LastName" class="form-label fw-bold">Last Name <span class="text-danger">*</span></label>
+                <input asp-for="LastName" class="form-control" placeholder="Enter last name" required />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Email" class="form-label fw-bold">Email Address <span class="text-danger">*</span></label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="example@muskan.com" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        
+            <div class="col-md-6">
+                <label asp-for="Role" class="form-label fw-bold">Assigned Role <span class="text-danger">*</span></label>
+                <select asp-for="Role" asp-items="ViewBag.Roles" class="form-select">
+                    <option value="">-- Change Role --</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <label asp-for="Address" class="form-label fw-bold">Address <span class="text-danger">*</span></label>
+                <textarea asp-for="Address" class="form-control" rows="3" placeholder="Enter full address"></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-start gap-2">
+            <button type="submit" class="btn btn-primary px-4 shadow-sm">
+                <i class="fas fa-save me-2"></i>Update Changes
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary px-4">
+                <i class="fas fa-arrow-left me-2"></i>Back to List
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/formHelpers.js"></script>
+
+    <script>
+        setupSweetAlertOnSubmit("editUserForm", "User information updated successfully.");
+    </script>
+}

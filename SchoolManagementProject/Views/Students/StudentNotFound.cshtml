@@ -1,0 +1,11 @@
+﻿@model string
+@{
+    Layout = "_Dashboard";
+    ViewBag.PageTitle = "Students";
+    ViewBag.SubPageTitle = "StudentNotFound";
+    ViewData["Title"] = "Student Not Found";
+}
+
+<h2 class="headingClass">Student Not Found!</h2>
+<p>Sorry, the Student you are looking for could not be found.</p>
+<p><a asp-action="Index">Back to Student List</a></p>

@@ -1,0 +1,66 @@
+﻿@using Newtonsoft.Json
+@model IEnumerable<SchoolManagementProject.ViewModels.UserListViewModel>
+@{
+    Layout = "_Dashboard";
+    ViewBag.PageTitle = "Users";
+    ViewBag.SubPageTitle = "Index";
+
+    ViewData["Title"] = "Users";
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+        Formatting = Formatting.Indented
+    };
+
+    var serializedData = JsonConvert.SerializeObject(Model, jsonSerializerSettings);
+}
+<h2 class="headingClass">Users</h2>
+<div>
+    <a asp-action="Create" class="btn btn-success mb-3">Create New User</a>
+</div>
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No Users found.</div>
+}
+else
+{
+    <div id="Grid"></div>
+}
+@section Scripts {
+    <script id="actionTemplate" type="text/x-template">
+        <a href="/User/Edit/${Id}" class="btn btn-warning me-2">Edit</a>
+        <a href="/User/Delete/${Id}" class="btn btn-danger me-2">Delete</a>
+        <a href="/User/Details/${Id}" class="btn btn-primary">Details</a>
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var serializedData = @Html.Raw(serializedData);
+
+            var grid = new ej.grids.Grid({
+                dataSource: serializedData,
+                allowPaging: true,
+                allowSorting: true,
+                allowFiltering: true,
+                allowGrouping: true,
+                filterSettings: { type: 'Menu' },
+                pageSettings: { pageSize: 10 },
+                toolbar: ['Search'],
+                groupSettings: { showGroupedColumn: true },
+                columns: [
+                    { field: "FullName", headerText: "User Name", width: 200 },
+                    { field: "Email", headerText: "Email", width: 300 },
+                    { field: "Role", headerText: "User Role", width: 100 },
+                    {
+                        headerText: "Actions",
+                        width: 180,
+                        textAlign: "Center",
+                        template: "#actionTemplate"
+                    }
+                ]
+            });
+
+            grid.appendTo("#Grid");
+        });
+    </script>
+}

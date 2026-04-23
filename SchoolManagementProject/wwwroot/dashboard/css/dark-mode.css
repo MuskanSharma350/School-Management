@@ -1,0 +1,46 @@
+﻿
+body.dark-mode {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+.sidebar.dark-mode {
+    background-color: #181818;
+}
+
+.sidebar-menu.dark-mode li a {
+    color: #b5b5b5;
+}
+
+    .sidebar-menu.dark-mode li a:hover {
+        background-color: #282828;
+    }
+
+.topbar.dark-mode {
+    background-color: #181818;
+}
+
+.card.dark-mode {
+    background-color: #232323;
+    box-shadow: none;
+}
+
+.breadcrumb.dark-mode {
+    background-color: #202020;
+}
+
+    .breadcrumb.dark-mode a {
+        color: #cccccc;
+    }
+
+        .breadcrumb.dark-mode a:hover {
+            color: #00e0ff;
+        }
+
+.logout-btn.dark-mode {
+    background-color: #ff6666;
+}
+
+    .logout-btn.dark-mode:hover {
+        background-color: #ff4d4d;
+    }

@@ -1,0 +1,107 @@
+﻿@using Newtonsoft.Json
+@model IEnumerable<SchoolManagementSystem.Models.Student>
+@{
+    Layout = "_Dashboard";
+    ViewBag.PageTitle = "Students";
+    ViewBag.SubPageTitle = "Index";
+
+    ViewData["Title"] = "Students List";
+
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+        Formatting = Formatting.Indented
+    };
+
+    var serializedData = JsonConvert.SerializeObject(Model, jsonSerializerSettings);
+}
+
+<h2 class="headingClass">Students</h2>
+
+<div>
+    <a asp-action="Create" class="btn btn-success mb-3">Create Student</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No students found.</div>
+}
+else
+{
+    <div id="Grid"></div>
+}
+
+@section Scripts {
+    <script id="profilePictureTemplate" type="text/x-template">
+        <div class="text-center">
+        <img src="${ImageFullPath}"
+        alt="Student"
+        style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;"
+        onerror="this.src='/images/student.png';" />
+        </div>
+    </script>
+
+    <script id="actionTemplate" type="text/x-template">
+        <a href="/Students/Edit/${Id}" class="btn btn-warning me-2">Edit</a>
+        <a href="/Students/Delete/${Id}" class="btn btn-danger me-2">Delete</a>
+        <a href="/Students/Details/${Id}" class="btn btn-primary">Details</a>
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var serializedData = @Html.Raw(serializedData);
+
+            serializedData.forEach(function (student) {
+                switch (student.Status) {
+                    case 0: 
+                        student.StatusText = "Pending";
+                        break;
+                    case 1: 
+                        student.StatusText = "Active";
+                        break;
+                    case 2: 
+                        student.StatusText = "Inactive";
+                        break;
+                }
+            });
+
+            var grid = new ej.grids.Grid({
+                dataSource: serializedData,
+                allowPaging: true,          
+                allowSorting: true,       
+                allowFiltering: true,        
+                allowGrouping: true,         
+                filterSettings: { type: 'Menu' }, 
+                pageSettings: { pageSize: 10 },
+                toolbar: ['Search'],           
+                groupSettings: { showGroupedColumn: true }, 
+                columns: [
+                    {
+                        field: "ImageFullPath",
+                        headerText: "Profile Picture",
+                        width: 100,
+                        textAlign: "Center",
+                        template: "#profilePictureTemplate"
+                    },
+                    { field: "FirstName", headerText: "First Name", width: 120 },
+                    { field: "LastName", headerText: "Last Name", width: 120 },
+                    {
+                        field: "FormattedEnrollmentDate", 
+                        headerText: "Enrollment Date",
+                        width: 150
+                    },
+                    { field: "StatusText", headerText: "Status", width: 100 },
+                    { field: "SchoolClass.ClassName", headerText: "School Class", width: 150 },
+                    {
+                        headerText: "Actions",
+                        width: 180,
+                        textAlign: "Center",
+                        template: "#actionTemplate"
+                    }
+                ]
+            });
+
+            grid.appendTo("#Grid"); 
+        });
+    </script>
+}

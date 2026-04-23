@@ -1,0 +1,135 @@
+﻿@using Newtonsoft.Json
+@model IEnumerable<SchoolManagementSystem.Models.Employee>
+@{
+    Layout = "_Dashboard";
+    ViewBag.PageTitle = "Employee";
+    ViewBag.SubPageTitle = "Index";
+    ViewData["Title"] = "Employees List";
+
+    var jsonSerializerSettings = new JsonSerializerSettings
+    {
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+        Formatting = Formatting.Indented
+    };
+
+    var serializedData = JsonConvert.SerializeObject(Model, jsonSerializerSettings);
+}
+
+<h2 class="headingClass">Employees</h2>
+
+<div>
+    <a asp-action="Create" class="btn btn-success mb-3">Create Employee</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No employees found.</div>
+}
+else
+{
+    <div id="Grid"></div>
+}
+
+@section Scripts {
+    <script id="profilePictureTemplate" type="text/x-template">
+        <div class="text-center">
+        <img src="${ImageFullPath}"
+        alt="Student"
+        style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;"
+        onerror="this.src='/images/student.png';" />
+        </div>
+    </script>
+
+    <script id="actionTemplate" type="text/x-template">
+        <a href="/Employees/Edit/${Id}" class="btn btn-warning me-2">Edit</a>
+        <a href="/Employees/Delete/${Id}" class="btn btn-danger me-2">Delete</a>
+        <a href="/Employees/Details/${Id}" class="btn btn-primary">Details</a>
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var serializedData = @Html.Raw(serializedData); 
+
+
+            serializedData.forEach(function (employee) {
+                switch (employee.Status) {
+                    case 0: 
+                        employee.StatusText = "Pending";
+                        break;
+                    case 1: 
+                        employee.StatusText = "Active";
+                        break;
+                    case 2: 
+                        employee.StatusText = "Inactive";
+                        break;
+                }
+
+ 
+                switch (employee.Department) {
+                    case 0: 
+                        employee.DepartmentText = "Administration";
+                        break;
+                    case 1: 
+                        employee.DepartmentText = "Human Resources";
+                        break;
+                    case 2: 
+                        employee.DepartmentText = "Finance";
+                        break;
+                    case 3: 
+                        employee.DepartmentText = "IT";
+                        break;
+                    case 4: 
+                        employee.DepartmentText = "Maintenance";
+                        break;
+                    case 5: 
+                        employee.DepartmentText = "Teaching Support";
+                        break;
+                    case 6: 
+                        employee.DepartmentText = "Security";
+                        break;
+                    case 7: 
+                        employee.DepartmentText = "Library";
+                        break;
+                }
+            });
+
+            var grid = new ej.grids.Grid({
+                dataSource: serializedData,
+                allowPaging: true,            
+                allowSorting: true,           
+                allowFiltering: true,         
+                allowGrouping: true,          
+                filterSettings: { type: 'Menu' }, 
+                pageSettings: { pageSize: 10 },
+                toolbar: ['Search'],          
+                groupSettings: { showGroupedColumn: true }, 
+                columns: [
+                    {
+                        field: "ImageFullPath",
+                        headerText: "Profile Picture",
+                        width: 100,
+                        textAlign: "Center",
+                        template: "#profilePictureTemplate"
+                    },
+                    { field: "FirstName", headerText: "First Name", width: 120 },
+                    { field: "LastName", headerText: "Last Name", width: 120 },
+                    {
+                        field: "FormattedHireDate", 
+                        headerText: "Hire Date",
+                        width: 150
+                    },
+                    { field: "StatusText", headerText: "Status", width: 100 },
+                    { field: "DepartmentText", headerText: "Department", width: 150 }, 
+                    {
+                        headerText: "Actions",
+                        width: 180,
+                        textAlign: "Center",
+                        template: "#actionTemplate"
+                    }
+                ]
+            });
+
+            grid.appendTo("#Grid"); 
+        });
+    </script>
+}
