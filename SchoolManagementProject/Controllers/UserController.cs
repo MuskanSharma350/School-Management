@@ -16,10 +16,12 @@ namespace SchoolManagementProject.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        private readonly SignInManager<User> _signInManager;
+        public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
         }
         public async Task<IActionResult> Index()
         {
@@ -113,8 +115,22 @@ namespace SchoolManagementProject.Controllers
                     TempData["ErrorMessage"] = "You cannot delete your own admin account.";
                     return RedirectToAction(nameof(Index));
                 }
+                var roles = await _userManager.GetRolesAsync(user);
+                if (roles.Contains("Admin"))
+                {
+                    TempData["ErrorMessage"] = "Admin accounts cannot be deleted for security reasons.";
+                    return RedirectToAction(nameof(Index));
+                }
 
-                await _userManager.DeleteAsync(user);
+                var result = await _userManager.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    TempData["SuccessMessage"] = "User deleted successfully.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Error occurred while deleting user.";
+                }
             }
             return RedirectToAction(nameof(Index));
         }
@@ -187,6 +203,22 @@ namespace SchoolManagementProject.Controllers
 
             ViewBag.Roles = new SelectList(_roleManager.Roles, "Name", "Name", model.Role);
             return View(model);
+        }
+        [Authorize(Roles = "Admin")] 
+        public async Task<IActionResult> LoginAs(string id)
+        {
+            if (string.IsNullOrEmpty(id)) return NotFound();
+
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound();
+
+            await _signInManager.SignOutAsync();
+
+            await _signInManager.SignInAsync(user, isPersistent: false);
+
+            TempData["SuccessMessage"] = $"You are now logged in as {user.FullName}";
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

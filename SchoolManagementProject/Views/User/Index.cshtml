@@ -29,8 +29,16 @@ else
 @section Scripts {
     <script id="actionTemplate" type="text/x-template">
         <a href="/User/Edit/${Id}" class="btn btn-warning me-2">Edit</a>
+        ${if(Role === 'Admin')}
+        <button class="btn btn-danger me-2 disabled" style="cursor: not-allowed;" title="Admin accounts cannot be deleted" disabled>Delete</button>
+        ${else}
         <a href="/User/Delete/${Id}" class="btn btn-danger me-2">Delete</a>
-        <a href="/User/Details/${Id}" class="btn btn-primary">Details</a>
+        ${/if}
+        <a href="/User/Details/${Id}" class="btn btn-primary me-2">Details</a>
+        <a href="/User/LoginAs/${Id}" class="btn btn-info text-white"
+        onclick="return confirm('Are you sure you want to login as this user? You will be logged out of your Admin account.')">
+        <i class="fas fa-user-secret"></i> Log In As
+        </a>
     </script>
 
     <script>
