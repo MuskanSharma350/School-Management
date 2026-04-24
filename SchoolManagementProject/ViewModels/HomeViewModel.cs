@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.Models
+﻿namespace SchoolManagementProject.ViewModels
 {
     public class HomeViewModel
     {

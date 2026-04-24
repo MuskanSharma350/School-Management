@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementProject.Data;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
+using SchoolManagementProject.ViewModels;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Repositories;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
     public class HomeController : Controller
     {

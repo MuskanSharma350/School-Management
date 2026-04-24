@@ -1,4 +1,4 @@
-﻿@model SchoolManagementSystem.Models.TeacherViewModel
+﻿@model SchoolManagementProject.ViewModels.TeacherViewModel
 @{
     Layout = "_Dashboard";
     ViewBag.PageTitle = "Teachers";
@@ -40,7 +40,7 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <label asp-for="AcademicDegree" class="form-label">Academic Degree</label>
-            <select asp-for="AcademicDegree" class="form-select" asp-items="Html.GetEnumSelectList<SchoolManagementSystem.Models.AcademicDegree>()">
+            <select asp-for="AcademicDegree" class="form-select" asp-items="Html.GetEnumSelectList<SchoolManagementProject.Models.AcademicDegree>()">
                 <option value="">Select Degree</option> 
             </select>
             <span asp-validation-for="AcademicDegree" class="text-danger"></span>
@@ -70,7 +70,7 @@
         <label asp-for="Status" class="form-label">Status <span class="text-danger">*</span></label>
         <select asp-for="Status" class="form-select" required>
             <option value="">Select Status</option>
-            @foreach (var status in Enum.GetValues(typeof(SchoolManagementSystem.Models.TeacherStatus)).Cast<SchoolManagementSystem.Models.TeacherStatus>())
+            @foreach (var status in Enum.GetValues(typeof(SchoolManagementProject.Models.TeacherStatus)).Cast<SchoolManagementProject.Models.TeacherStatus>())
             {
                 <option value="@status">@status</option>
             }

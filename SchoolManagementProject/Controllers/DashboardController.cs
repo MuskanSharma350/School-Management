@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SchoolManagementSystem.Repositories;
+using SchoolManagementProject.Repositories;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
     [Authorize] 
     public class DashboardController : Controller

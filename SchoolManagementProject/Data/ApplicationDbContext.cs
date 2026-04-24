@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SchoolManagementSystem.Models;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Models;
 
 namespace SchoolManagementProject.Data
 {

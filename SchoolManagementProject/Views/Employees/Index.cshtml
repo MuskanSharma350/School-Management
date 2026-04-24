@@ -1,5 +1,5 @@
 ﻿@using Newtonsoft.Json
-@model IEnumerable<SchoolManagementSystem.Models.Employee>
+@model IEnumerable<SchoolManagementProject.Models.Employee>
 @{
     Layout = "_Dashboard";
     ViewBag.PageTitle = "Employee";
@@ -34,9 +34,9 @@ else
     <script id="profilePictureTemplate" type="text/x-template">
         <div class="text-center">
         <img src="${ImageFullPath}"
-        alt="Student"
+        alt="Employee"
         style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;"
-        onerror="this.src='/images/student.png';" />
+        onerror="this.src='/images/employee.png';" />
         </div>
     </script>
 

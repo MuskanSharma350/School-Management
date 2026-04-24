@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SchoolManagementSystem.Repositories;
-using SchoolManagementSystem.Models;
+using SchoolManagementProject.Repositories;
+using SchoolManagementProject.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SchoolManagementSystem.API
+namespace SchoolManagementProject.API
 {
     [Route("api/[controller]")]
     [ApiController]

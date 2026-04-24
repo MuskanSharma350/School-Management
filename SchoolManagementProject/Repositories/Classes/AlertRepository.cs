@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolManagementProject.Data;
-using SchoolManagementSystem.Models;
+using SchoolManagementProject.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SchoolManagementSystem.Repositories
+namespace SchoolManagementProject.Repositories
 {
     public class AlertRepository : GenericRepository<Alert>, IAlertRepository
     {

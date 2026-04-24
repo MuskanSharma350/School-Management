@@ -4,15 +4,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using SchoolManagementProject.Data;
-using SchoolManagementSystem.Helpers;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Helpers;
+using SchoolManagementProject.Repositories;
 using Syncfusion.Licensing;
 using System.Text;
 
 
 
-namespace SchoolManagementSystem
+namespace SchoolManagementProject
 {
     public class Program
     {
@@ -51,19 +51,7 @@ namespace SchoolManagementSystem
             .AddDefaultTokenProviders()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            // Authentication services
-            builder.Services.AddAuthentication()
-                .AddCookie()
-                .AddJwtBearer(cfg =>
-                {
-                    cfg.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidIssuer = builder.Configuration["Tokens:Issuer"],
-                        ValidAudience = builder.Configuration["Tokens:Audience"],
-                        IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(builder.Configuration["Tokens:Key"]))
-                    };
-                });
+            
 
             // Repositories
             builder.Services.AddScoped<IAlertRepository, AlertRepository>();
@@ -77,24 +65,18 @@ namespace SchoolManagementSystem
             builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
             builder.Services.AddScoped<IAttendanceRepository, AttendanceRepository>();
 
-
-            // Generic repository
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-            // Inject UserHelper and MailHelper
             builder.Services.AddScoped<IUserHelper, UserHelper>();
             builder.Services.AddTransient<IMailHelper, MailHelper>();
             builder.Services.AddScoped<IConverterHelper, ConverterHelper>();
 
-            // Register SeedDb to seed the database with initial data
             builder.Services.AddTransient<SeedDb>();
 
             var app = builder.Build();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH9ec3RTRWhfWUx3XUY=");
 
-            //SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH9ec3RTRWhfWUx3XUY=");
 
-            // Seed the database with initial data
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -110,15 +92,12 @@ namespace SchoolManagementSystem
                 await userHelper.CheckRoleAsync("Pending");
             }
 
-            // Exception and error handling middleware
             if (!app.Environment.IsDevelopment())
             {
-                // Redirects to general error page
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
 
-            // Configuration for specific HTTP status codes
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
 
@@ -127,7 +106,7 @@ namespace SchoolManagementSystem
 
             app.UseRouting();
 
-            app.UseAuthentication(); // Required for authentication
+            app.UseAuthentication(); 
             app.UseAuthorization();
 
             app.MapControllerRoute(

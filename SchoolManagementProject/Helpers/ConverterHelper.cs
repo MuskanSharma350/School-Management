@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NuGet.DependencyResolver;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.ViewModels;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Repositories;
 
-namespace SchoolManagementSystem.Helpers
+namespace SchoolManagementProject.Helpers
 {
     public class ConverterHelper : IConverterHelper
     {
@@ -30,13 +32,20 @@ namespace SchoolManagementSystem.Helpers
 
         public async Task<Student> ToStudentAsync(StudentViewModel model, Guid imageId, bool isNew)
         {
-            var user = await _userHelper.GetUserByIdAsync(model.UserId);
-            if (user == null) throw new Exception("User not found");
+            string? userId = null;
+            if (!string.IsNullOrEmpty(model.UserId))
+            {
+                var user = await _userHelper.GetUserByIdAsync(model.UserId);
+                if (user != null)
+                {
+                    userId = user.Id;
+                }
+            }
 
             return new Student
             {
                 Id = isNew ? 0 : model.Id, 
-                UserId = user.Id,
+                UserId = userId,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 EnrollmentDate = model.EnrollmentDate,
@@ -62,16 +71,22 @@ namespace SchoolManagementSystem.Helpers
                 ImageId = student.ImageId 
             };
         }
-
         public async Task<Teacher> ToTeacherAsync(TeacherViewModel model, Guid imageId, bool isNew)
         {
-            var user = await _userHelper.GetUserByIdAsync(model.UserId);
-            if (user == null) throw new Exception("User not found");
+            string? userId = null;
+            if (!string.IsNullOrEmpty(model.UserId))
+            {
+                var user = await _userHelper.GetUserByIdAsync(model.UserId);
+                if (user != null)
+                {
+                    userId = user.Id;
+                }
+            }
 
             return new Teacher
             {
                 Id = isNew ? 0 : model.Id,
-                UserId = user.Id,
+                UserId = userId,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 AcademicDegree = model.AcademicDegree,
@@ -115,13 +130,20 @@ namespace SchoolManagementSystem.Helpers
 
         public async Task<Employee> ToEmployeeAsync(EmployeeViewModel model, Guid imageId, bool isNew)
         {
-            var user = await _userHelper.GetUserByIdAsync(model.UserId);
-            if (user == null) throw new Exception("User not found");
+            string? userId = null;
+            if (!string.IsNullOrEmpty(model.UserId))
+            {
+                var user = await _userHelper.GetUserByIdAsync(model.UserId);
+                if (user != null)
+                {
+                    userId = user.Id;
+                }
+            }
 
             return new Employee
             {
                 Id = isNew ? 0 : model.Id,
-                UserId = user.Id,
+                UserId = userId,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Department = model.Department,

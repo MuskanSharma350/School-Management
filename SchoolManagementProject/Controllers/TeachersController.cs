@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
-using SchoolManagementSystem.Helpers;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Repositories;
+using SchoolManagementProject.Helpers;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using SchoolManagementProject.ViewModels;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
     [Authorize(Roles = "Employee,Admin")]
     public class TeachersController : Controller
@@ -93,10 +94,15 @@ namespace SchoolManagementSystem.Controllers
                 var teacher = await _converterHelper.ToTeacherAsync(model, imageId, true);
 
                 await _teacherRepository.CreateAsync(teacher);
-
-                var user = await _userHelper.GetUserByIdAsync(model.UserId);
-                await _userHelper.RemoveUserFromRoleAsync(user, "Pending");
-                await _userHelper.AddUserToRoleAsync(user, "Teacher");
+                if (!string.IsNullOrEmpty(model.UserId))
+                {
+                    var user = await _userHelper.GetUserByIdAsync(model.UserId);
+                    if (user != null)
+                    {
+                        await _userHelper.RemoveUserFromRoleAsync(user, "Pending");
+                        await _userHelper.AddUserToRoleAsync(user, "Teacher");
+                    }
+                }
 
                 return RedirectToAction(nameof(Index));
             }

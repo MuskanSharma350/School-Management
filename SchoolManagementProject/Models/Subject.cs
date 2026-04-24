@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.Models
 {
     public class Subject : IEntity
     {
@@ -15,11 +15,8 @@ namespace SchoolManagementSystem.Models
         public int Credits { get; set; }
 
         public int TotalClasses { get; set; }
-
-        // Collection of teachers associated with this subject
         public ICollection<TeacherSubject> TeacherSubjects { get; set; } = new List<TeacherSubject>();
 
-        // Collection of courses associated with this discipline
         public ICollection<CourseSubject> CourseSubjects { get; set; } = new List<CourseSubject>();
 
     }

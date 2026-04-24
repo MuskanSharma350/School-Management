@@ -12,8 +12,8 @@ using SchoolManagementProject.Data;
 namespace SchoolManagementProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260423055123_ChangeUserDeleteToCascade")]
-    partial class ChangeUserDeleteToCascade
+    [Migration("20260424083729_addNullChecks")]
+    partial class addNullChecks
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -304,7 +304,6 @@ namespace SchoolManagementProject.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -442,7 +441,6 @@ namespace SchoolManagementProject.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -512,7 +510,6 @@ namespace SchoolManagementProject.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -744,9 +741,7 @@ namespace SchoolManagementProject.Migrations
                 {
                     b.HasOne("SchoolManagementProject.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -801,8 +796,7 @@ namespace SchoolManagementProject.Migrations
                     b.HasOne("SchoolManagementProject.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("SchoolClass");
 
@@ -813,9 +807,7 @@ namespace SchoolManagementProject.Migrations
                 {
                     b.HasOne("SchoolManagementProject.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });

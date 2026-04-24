@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.Models
 {
     public class Payment : IEntity
     {

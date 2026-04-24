@@ -1,6 +1,6 @@
 ﻿using SchoolManagementProject.Data;
-using SchoolManagementSystem.Helpers;
-using SchoolManagementSystem.Models;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Helpers;
 
 public class SeedDb
 {
@@ -19,9 +19,12 @@ public class SeedDb
 
         // Create roles and users
         await _userHelper.CheckRoleAsync("Admin");
+        await _userHelper.CheckRoleAsync("Pending");
 
         // Create users
         var adminUser = await CreateUserAsync("admin@school.com", "Admin", "User", "Admin123!", "Admin");
+        var pendingUser1 = await CreateUserAsync("pending1@school.com", "Pending", "User", "Pending123!", "Pending");
+        var pendingUser2 = await CreateUserAsync("pending2@school.com", "Pending", "User", "Pending123!", "Pending");
     }
 
     private async Task<User> CreateUserAsync(string email, string firstName, string lastName, string password, string role)

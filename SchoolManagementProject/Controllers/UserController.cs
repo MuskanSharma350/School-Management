@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SchoolManagementProject.Data;
+using SchoolManagementProject.Models;
 using SchoolManagementProject.ViewModels;
-using SchoolManagementSystem.Models;
 using System.Data;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 

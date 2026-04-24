@@ -1,8 +1,8 @@
-﻿using SchoolManagementSystem.Models;
+﻿using SchoolManagementProject.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SchoolManagementSystem.Repositories
+namespace SchoolManagementProject.Repositories
 {
     public interface IAlertRepository : IGenericRepository<Alert>
     {

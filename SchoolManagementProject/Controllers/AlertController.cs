@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SchoolManagementSystem.Helpers;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
+using SchoolManagementProject.ViewModels;
+using SchoolManagementProject.Helpers;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Repositories;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
     public class AlertController : Controller
     {

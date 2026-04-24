@@ -1,6 +1,7 @@
-﻿using SchoolManagementSystem.Models;
+﻿using SchoolManagementProject.Models;
+using SchoolManagementProject.Models;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.ViewModels
 {
     public class StudentSubjectGradeViewModel
     {

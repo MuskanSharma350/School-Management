@@ -1,7 +1,7 @@
 ﻿using MailKit.Net.Smtp;
 using MimeKit;
 
-namespace SchoolManagementSystem.Helpers
+namespace SchoolManagementProject.Helpers
 {
     public class MailHelper : IMailHelper
     {

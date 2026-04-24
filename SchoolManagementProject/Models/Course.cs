@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.Models
 {
     public class Course : IEntity
     {
@@ -14,7 +14,7 @@ namespace SchoolManagementSystem.Models
         public string Description { get; set; }
 
         [Range(1, 52)]
-        public int Duration { get; set; } // Duration in weeks, for example.
+        public int Duration { get; set; } 
 
         public bool IsActive { get; set; } = true;
 
@@ -22,10 +22,8 @@ namespace SchoolManagementSystem.Models
 
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
-        // One-to-many relationship with SchoolClass
         public ICollection<SchoolClass> SchoolClasses { get; set; } = new List<SchoolClass>();
 
-        // Many-to-many relationship through the CourseSubject entity
         public ICollection<CourseSubject> CourseSubjects { get; set; } = new List<CourseSubject>();
     }
 }

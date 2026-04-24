@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SchoolManagementSystem.Repositories;
+using SchoolManagementProject.Repositories;
 using System.Threading.Tasks;
 
-namespace SchoolManagementSystem.ViewComponents
+namespace SchoolManagementProject.ViewComponents
 {
     public class NotificationsViewComponent : ViewComponent
     {

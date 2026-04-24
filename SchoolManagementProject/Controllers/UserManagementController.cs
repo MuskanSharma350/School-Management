@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SchoolManagementSystem.Helpers;
-using SchoolManagementSystem.Models;
+using SchoolManagementProject.Helpers;
+using SchoolManagementProject.Models;
 using System.Threading.Tasks;
+using SchoolManagementProject.ViewModels;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class UserManagementController : Controller
@@ -35,7 +36,7 @@ namespace SchoolManagementSystem.Controllers
             var model = new AssignRoleViewModel
             {
                 UserId = user.Id,
-                Roles = new List<string> { "Admin", "Employee", "Student", "Anonymous" } // Available roles
+                Roles = new List<string> { "Admin", "Employee", "Student", "Anonymous" } 
             };
 
             return View(model);

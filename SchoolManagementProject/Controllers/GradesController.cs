@@ -2,15 +2,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Helpers;
-using SchoolManagementSystem.Repositories;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Helpers;
+using SchoolManagementProject.Repositories;
 using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using SchoolManagementProject.ViewModels;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
     
     public class GradesController : Controller

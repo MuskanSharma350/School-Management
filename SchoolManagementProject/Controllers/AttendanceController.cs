@@ -3,16 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using SchoolManagementSystem.Helpers;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
+using SchoolManagementProject.ViewModels;
+using SchoolManagementProject.Helpers;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
 
     public class AttendanceController : Controller

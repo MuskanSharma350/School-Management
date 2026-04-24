@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SchoolManagementSystem.Models;
+using SchoolManagementProject.ViewModels;
+using SchoolManagementProject.Models;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
     public class ErrorController : Controller
     {

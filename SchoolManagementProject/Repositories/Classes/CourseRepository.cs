@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementProject.Data;
-using SchoolManagementSystem.Models;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.ViewModels;
 using System.Threading.Tasks;
 
-namespace SchoolManagementSystem.Repositories
+namespace SchoolManagementProject.Repositories
 {
     public class CourseRepository : GenericRepository<Course>, ICourseRepository
     {

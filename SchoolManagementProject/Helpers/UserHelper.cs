@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.ViewModels;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Repositories;
 
-namespace SchoolManagementSystem.Helpers
+namespace SchoolManagementProject.Helpers
 {
     public class UserHelper : IUserHelper
     {

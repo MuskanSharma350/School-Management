@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using SchoolManagementSystem.Models;
+using SchoolManagementProject.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.ViewModels
 {
     public class StudentViewModel
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Pending User is required")]
         [Display(Name = "Pending User")]
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
 
         [Required(ErrorMessage = "First Name is required")]
         [Display(Name = "First Name")]

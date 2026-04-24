@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolManagementProject.Data;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Repositories;
 
 public class GradeRepository : GenericRepository<Grade>, IGradeRepository
 {

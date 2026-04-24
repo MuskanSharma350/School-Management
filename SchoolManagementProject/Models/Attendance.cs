@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.Models
 {
     public class Attendance : IEntity
     {

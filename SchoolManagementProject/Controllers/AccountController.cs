@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using SchoolManagementSystem.Helpers;
-using SchoolManagementSystem.Models;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.ViewModels;
+using SchoolManagementProject.Helpers;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
     public class AccountController : Controller
     {

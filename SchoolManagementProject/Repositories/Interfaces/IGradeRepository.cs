@@ -1,5 +1,6 @@
-﻿using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
+﻿using SchoolManagementProject.Models;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Repositories;
 
 public interface IGradeRepository : IGenericRepository<Grade>
 {

@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.Helpers
+﻿namespace SchoolManagementProject.Helpers
 {
     public interface IMailHelper
     {

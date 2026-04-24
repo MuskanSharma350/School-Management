@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace SchoolManagementSystem.Helpers
+namespace SchoolManagementProject.Helpers
 {
     public class NotFoundViewResult : ViewResult
     {

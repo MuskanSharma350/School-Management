@@ -1,4 +1,4 @@
-﻿@model SchoolManagementSystem.Models.EmployeeViewModel
+﻿@model SchoolManagementProject.ViewModels.EmployeeViewModel
 @{
     Layout = "_Dashboard";
     ViewBag.PageTitle = "Employee";
@@ -23,9 +23,9 @@
 <form id="createEmployeeForm" asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="row mb-3">
         <div class="col-md-6">
-            <label asp-for="UserId" class="form-label">Pending User <span class="text-danger">*</span></label>
-            <select asp-for="UserId" class="form-select" asp-items="ViewBag.PendingUsers" id="pendingUserDropdown" required>
-                <option value="">Select Employee</option>
+            <label asp-for="UserId" class="form-label">Pending User (Optional)</label>
+            <select asp-for="UserId" class="form-select" asp-items="ViewBag.PendingUsers" id="pendingUserDropdown">
+                <option value="">Select Employee (Optional)</option>
             </select>
             <span asp-validation-for="UserId" class="text-danger"></span>
         </div>
@@ -33,7 +33,7 @@
             <label asp-for="Department" class="form-label">Department <span class="text-danger">*</span></label>
             <select asp-for="Department" class="form-select" required>
                 <option value="">Select Department</option> 
-                @foreach (var department in Enum.GetValues(typeof(SchoolManagementSystem.Models.Department)).Cast<SchoolManagementSystem.Models.Department>())
+                @foreach (var department in Enum.GetValues(typeof(SchoolManagementProject.Models.Department)).Cast<SchoolManagementProject.Models.Department>())
                 {
                     <option value="@department">@department</option>
                 }
@@ -47,7 +47,7 @@
             <label asp-for="Status" class="form-label">Status <span class="text-danger">*</span></label>
             <select asp-for="Status" class="form-select" required>
                 <option value="">Select Status</option>
-                @foreach (var status in Enum.GetValues(typeof(SchoolManagementSystem.Models.EmployeeStatus)).Cast<SchoolManagementSystem.Models.EmployeeStatus>())
+                @foreach (var status in Enum.GetValues(typeof(SchoolManagementProject.Models.EmployeeStatus)).Cast<SchoolManagementProject.Models.EmployeeStatus>())
                 {
                     <option value="@status">@status</option>
                 }
@@ -56,7 +56,7 @@
         </div>
         <div class="col-md-6">
             <label asp-for="AcademicDegree" class="form-label">Academic Degree</label>
-            <select asp-for="AcademicDegree" class="form-select" asp-items="Html.GetEnumSelectList<SchoolManagementSystem.Models.AcademicDegree>()">
+            <select asp-for="AcademicDegree" class="form-select" asp-items="Html.GetEnumSelectList<SchoolManagementProject.Models.AcademicDegree>()">
                 <option value="">Select Degree</option>
             </select>
             <span asp-validation-for="AcademicDegree" class="text-danger"></span>

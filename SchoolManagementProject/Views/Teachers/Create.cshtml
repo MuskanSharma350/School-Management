@@ -1,4 +1,4 @@
-﻿@model SchoolManagementSystem.Models.TeacherViewModel
+﻿@model SchoolManagementProject.ViewModels.TeacherViewModel
 @{
     Layout = "_Dashboard";
     ViewBag.PageTitle = "Teachers";
@@ -23,16 +23,16 @@
 <form id="createTeacherForm" asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="row mb-3">
         <div class="col-md-6">
-            <label asp-for="UserId" class="form-label">Pending User <span class="text-danger">*</span></label>
-            <select asp-for="UserId" class="form-select" asp-items="ViewBag.PendingUsers" id="pendingUserDropdown" required>
-                <option value="">Select User</option> <!-- Default option -->
+            <label asp-for="UserId" class="form-label">Pending User</label>
+            <select asp-for="UserId" class="form-select" asp-items="ViewBag.PendingUsers" id="pendingUserDropdown">
+                <option value="">Select User (Optional)</option> 
             </select>
             <span asp-validation-for="UserId" class="text-danger"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="AcademicDegree" class="form-label">Academic Degree</label>
-            <select asp-for="AcademicDegree" class="form-select" asp-items="Html.GetEnumSelectList<SchoolManagementSystem.Models.AcademicDegree>()">
-                <option value="">Select Degree</option> <!-- Default option -->
+            <select asp-for="AcademicDegree" class="form-select" asp-items="Html.GetEnumSelectList<SchoolManagementProject.Models.AcademicDegree>()">
+                <option value="">Select Degree</option>
             </select>
             <span asp-validation-for="AcademicDegree" class="text-danger"></span>
         </div>
@@ -61,7 +61,7 @@
             <label asp-for="Status" class="form-label">Status <span class="text-danger">*</span></label>
             <select asp-for="Status" class="form-select" required>
                 <option value="">Select Status</option> 
-                @foreach (var status in Enum.GetValues(typeof(SchoolManagementSystem.Models.TeacherStatus)).Cast<SchoolManagementSystem.Models.TeacherStatus>())
+                @foreach (var status in Enum.GetValues(typeof(SchoolManagementProject.Models.TeacherStatus)).Cast<SchoolManagementProject.Models.TeacherStatus>())
                 {
                     <option value="@status">@status</option>
                 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.Models
 {
     public enum AcademicDegree
     {

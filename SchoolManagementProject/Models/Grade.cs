@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.Models
 {
     public class Grade : IEntity
     {
@@ -20,7 +19,6 @@ namespace SchoolManagementSystem.Models
         [Display(Name = "Evaluation Date")]
         public DateTime EvaluationDate { get; set; } = DateTime.Now;
 
-        // Calculated property to determine pass/fail status
         public string Status => Value >= 9.5 ? "Passed" : "Failed";
     }
 }

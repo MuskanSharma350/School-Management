@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.Models
+﻿namespace SchoolManagementProject.Models
 {
     public class TeacherSubject
     {

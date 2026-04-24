@@ -1,6 +1,8 @@
-﻿using SchoolManagementSystem.Models;
+﻿using SchoolManagementProject.Models;
+using SchoolManagementProject.ViewModels;
+using SchoolManagementProject.Models;
 
-namespace SchoolManagementSystem.Repositories
+namespace SchoolManagementProject.Repositories
 {
     public interface ISchoolClassRepository : IGenericRepository<SchoolClass>
     {

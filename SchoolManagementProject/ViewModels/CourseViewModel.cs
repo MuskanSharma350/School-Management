@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using SchoolManagementProject.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.ViewModels
 {
     public class CourseViewModel
     {
@@ -26,18 +27,12 @@ namespace SchoolManagementSystem.Models
 
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
-
-
-        // IDs selected through checkboxes
         public List<int> SelectedSchoolClassIds { get; set; } = new List<int>();
         public List<int> SelectedSubjectIds { get; set; } = new List<int>();
 
-
-        // Lists to display in checkboxes
         public List<SchoolClass> SchoolClasses { get; set; } = new List<SchoolClass>();
         public List<Subject> Subjects { get; set; } = new List<Subject>();
 
-        // Checkboxes to display
         public List<SelectListItem> SchoolClassItems { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> SubjectItems { get; set; } = new List<SelectListItem>();
     }

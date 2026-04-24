@@ -1,4 +1,4 @@
-﻿@model SchoolManagementSystem.Models.StudentViewModel
+﻿@model SchoolManagementProject.ViewModels.StudentViewModel
 @{
     Layout = "_Dashboard";
     ViewBag.PageTitle = "Students";
@@ -23,9 +23,9 @@
 <form id="createStudentForm" asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="row mb-3">
         <div class="col-md-6">
-            <label asp-for="UserId" class="form-label">Pending User <span class="text-danger">*</span></label>
-            <select asp-for="UserId" class="form-select" asp-items="ViewBag.PendingUsers" id="pendingUserDropdown" required>
-                <option value="">Select Student</option> 
+            <label asp-for="UserId" class="form-label">Pending User</label>
+            <select asp-for="UserId" class="form-select" asp-items="ViewBag.PendingUsers" id="pendingUserDropdown">
+                <option value="">Select Student (Optional)</option> 
             </select>
             <span asp-validation-for="UserId" class="text-danger"></span>
         </div>
@@ -61,7 +61,7 @@
             <label asp-for="Status" class="form-label">Status <span class="text-danger">*</span></label>
             <select asp-for="Status" class="form-select" required>
                 <option value="">Select Status</option> 
-                @foreach (var status in Enum.GetValues(typeof(SchoolManagementSystem.Models.StudentStatus)).Cast<SchoolManagementSystem.Models.StudentStatus>())
+                @foreach (var status in Enum.GetValues(typeof(SchoolManagementProject.Models.StudentStatus)).Cast<SchoolManagementProject.Models.StudentStatus>())
                 {
                     <option value="@status">@status</option>
                 }

@@ -155,7 +155,7 @@ namespace SchoolManagementProject.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Alert", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Alert", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -181,10 +181,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Alerts", (string)null);
+                    b.ToTable("Alerts");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Attendance", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Attendance", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -210,10 +210,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("Attendances", (string)null);
+                    b.ToTable("Attendances");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Course", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Course", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -245,10 +245,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses", (string)null);
+                    b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.CourseSubject", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.CourseSubject", b =>
                 {
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
@@ -260,10 +260,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("CourseSubjects", (string)null);
+                    b.ToTable("CourseSubjects");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Employee", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Employee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -301,17 +301,16 @@ namespace SchoolManagementProject.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Grade", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Grade", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -337,10 +336,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("Grades", (string)null);
+                    b.ToTable("Grades");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Payment", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Payment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -376,10 +375,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("Payments", (string)null);
+                    b.ToTable("Payments");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.SchoolClass", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.SchoolClass", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -405,10 +404,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("SchoolClasses", (string)null);
+                    b.ToTable("SchoolClasses");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Student", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Student", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -439,7 +438,6 @@ namespace SchoolManagementProject.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -448,10 +446,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Students", (string)null);
+                    b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Subject", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Subject", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -475,10 +473,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Subjects", (string)null);
+                    b.ToTable("Subjects");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Teacher", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Teacher", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -509,17 +507,16 @@ namespace SchoolManagementProject.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Teachers", (string)null);
+                    b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.TeacherSchoolClass", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.TeacherSchoolClass", b =>
                 {
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
@@ -531,10 +528,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasIndex("SchoolClassId");
 
-                    b.ToTable("TeacherSchoolClasses", (string)null);
+                    b.ToTable("TeacherSchoolClasses");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.TeacherSubject", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.TeacherSubject", b =>
                 {
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
@@ -546,10 +543,10 @@ namespace SchoolManagementProject.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("TeacherSubjects", (string)null);
+                    b.ToTable("TeacherSubjects");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.User", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -648,7 +645,7 @@ namespace SchoolManagementProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.User", null)
+                    b.HasOne("SchoolManagementProject.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -657,7 +654,7 @@ namespace SchoolManagementProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.User", null)
+                    b.HasOne("SchoolManagementProject.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -672,7 +669,7 @@ namespace SchoolManagementProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagementSystem.Models.User", null)
+                    b.HasOne("SchoolManagementProject.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -681,16 +678,16 @@ namespace SchoolManagementProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.User", null)
+                    b.HasOne("SchoolManagementProject.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Alert", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Alert", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.Employee", "Employee")
+                    b.HasOne("SchoolManagementProject.Models.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -699,15 +696,15 @@ namespace SchoolManagementProject.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Attendance", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Attendance", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.Student", "Student")
+                    b.HasOne("SchoolManagementProject.Models.Student", "Student")
                         .WithMany("Attendances")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagementSystem.Models.Subject", "Subject")
+                    b.HasOne("SchoolManagementProject.Models.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -718,15 +715,15 @@ namespace SchoolManagementProject.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.CourseSubject", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.CourseSubject", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.Course", "Course")
+                    b.HasOne("SchoolManagementProject.Models.Course", "Course")
                         .WithMany("CourseSubjects")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagementSystem.Models.Subject", "Subject")
+                    b.HasOne("SchoolManagementProject.Models.Subject", "Subject")
                         .WithMany("CourseSubjects")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -737,26 +734,24 @@ namespace SchoolManagementProject.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Employee", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Employee", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.User", "User")
+                    b.HasOne("SchoolManagementProject.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Grade", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Grade", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.Student", "Student")
+                    b.HasOne("SchoolManagementProject.Models.Student", "Student")
                         .WithMany("Grades")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagementSystem.Models.Subject", "Subject")
+                    b.HasOne("SchoolManagementProject.Models.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -767,9 +762,9 @@ namespace SchoolManagementProject.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Payment", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Payment", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.Student", "Student")
+                    b.HasOne("SchoolManagementProject.Models.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -778,9 +773,9 @@ namespace SchoolManagementProject.Migrations
                     b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.SchoolClass", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.SchoolClass", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.Course", "Course")
+                    b.HasOne("SchoolManagementProject.Models.Course", "Course")
                         .WithMany("SchoolClasses")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.SetNull);
@@ -788,44 +783,41 @@ namespace SchoolManagementProject.Migrations
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Student", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Student", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.SchoolClass", "SchoolClass")
+                    b.HasOne("SchoolManagementProject.Models.SchoolClass", "SchoolClass")
                         .WithMany("Students")
                         .HasForeignKey("SchoolClassId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("SchoolManagementSystem.Models.User", "User")
+                    b.HasOne("SchoolManagementProject.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("SchoolClass");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Teacher", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Teacher", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.User", "User")
+                    b.HasOne("SchoolManagementProject.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.TeacherSchoolClass", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.TeacherSchoolClass", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.SchoolClass", "SchoolClass")
+                    b.HasOne("SchoolManagementProject.Models.SchoolClass", "SchoolClass")
                         .WithMany("TeacherSchoolClasses")
                         .HasForeignKey("SchoolClassId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagementSystem.Models.Teacher", "Teacher")
+                    b.HasOne("SchoolManagementProject.Models.Teacher", "Teacher")
                         .WithMany("TeacherSchoolClasses")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -836,15 +828,15 @@ namespace SchoolManagementProject.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.TeacherSubject", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.TeacherSubject", b =>
                 {
-                    b.HasOne("SchoolManagementSystem.Models.Subject", "Subject")
+                    b.HasOne("SchoolManagementProject.Models.Subject", "Subject")
                         .WithMany("TeacherSubjects")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SchoolManagementSystem.Models.Teacher", "Teacher")
+                    b.HasOne("SchoolManagementProject.Models.Teacher", "Teacher")
                         .WithMany("TeacherSubjects")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -855,35 +847,35 @@ namespace SchoolManagementProject.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Course", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Course", b =>
                 {
                     b.Navigation("CourseSubjects");
 
                     b.Navigation("SchoolClasses");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.SchoolClass", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.SchoolClass", b =>
                 {
                     b.Navigation("Students");
 
                     b.Navigation("TeacherSchoolClasses");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Student", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Student", b =>
                 {
                     b.Navigation("Attendances");
 
                     b.Navigation("Grades");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Subject", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Subject", b =>
                 {
                     b.Navigation("CourseSubjects");
 
                     b.Navigation("TeacherSubjects");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Models.Teacher", b =>
+            modelBuilder.Entity("SchoolManagementProject.Models.Teacher", b =>
                 {
                     b.Navigation("TeacherSchoolClasses");
 

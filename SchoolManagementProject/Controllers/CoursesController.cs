@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
-using SchoolManagementSystem.Helpers;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Repositories;
+using SchoolManagementProject.Helpers;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using SchoolManagementProject.ViewModels;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
     [Authorize(Roles = "Employee,Admin")]
 

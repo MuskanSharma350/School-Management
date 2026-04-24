@@ -1,8 +1,10 @@
-﻿using SchoolManagementSystem.Models;
+﻿using SchoolManagementProject.Models;
+using SchoolManagementProject.ViewModels;
+using SchoolManagementProject.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace SchoolManagementSystem.Helpers
+namespace SchoolManagementProject.Helpers
 {
     public interface IConverterHelper
     {

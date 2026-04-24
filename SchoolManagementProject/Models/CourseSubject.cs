@@ -1,6 +1,6 @@
-﻿namespace SchoolManagementSystem.Models
+﻿namespace SchoolManagementProject.Models
 {
-    public class CourseSubject // Join table between Course and Discipline
+    public class CourseSubject
     {
         public int CourseId { get; set; }
         public Course Course { get; set; }

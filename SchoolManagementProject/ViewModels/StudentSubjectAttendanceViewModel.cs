@@ -1,38 +1,32 @@
-﻿using SchoolManagementSystem.Models;
+﻿using SchoolManagementProject.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.ViewModels
 {
     public class StudentSubjectAttendanceViewModel
     {
-        public Subject Subject { get; set; } // The subject related to the absence
-        public Attendance Attendance { get; set; } // The Attendance entity that contains absence details
-        public int StudentId { get; set; } // Student ID
-        public string StudentName { get; set; } // Student name
+        public Subject Subject { get; set; } 
+        public Attendance Attendance { get; set; } 
+        public int StudentId { get; set; }
+        public string StudentName { get; set; } 
 
-        // Status based on presence or absence
         public string Status => Attendance != null ? "Absent" : "Present";
 
-        // List of all absences for this subject
         public List<Attendance> AllAttendances { get; set; }
 
-        // Property that calculates the total absences
-        public int TotalAbsences => AllAttendances?.Count() ?? 0; // Count of absences
+        public int TotalAbsences => AllAttendances?.Count() ?? 0; 
 
-        // Total number of classes
-        public int TotalClasses => Subject.TotalClasses; // Gets the total number of classes for the subject
+        public int TotalClasses => Subject.TotalClasses; 
 
-        // Checks if the student can add more absences
-        public bool CanAddAttendance { get; set; } // True if the student can add absences, false otherwise
+        public bool CanAddAttendance { get; set; } 
 
-        // Checks if the student has failed this subject
         public string SubjectAttendanceStatus()
         {
             if (TotalClasses == 0) return "No classes available";
 
-            double allowedAbsences = TotalClasses * 0.2; // 20% of the total number of classes
-            return TotalAbsences > allowedAbsences ? "Failed" : "Passed"; // If exceeds the limit, failed
+            double allowedAbsences = TotalClasses * 0.2; 
+            return TotalAbsences > allowedAbsences ? "Failed" : "Passed"; 
         }
     }
 }

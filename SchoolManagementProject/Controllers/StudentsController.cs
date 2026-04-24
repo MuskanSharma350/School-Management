@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SchoolManagementSystem.Models;
-using SchoolManagementSystem.Repositories;
-using SchoolManagementSystem.Helpers;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.Repositories;
+using SchoolManagementProject.Helpers;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using SchoolManagementProject.ViewModels;
 
-namespace SchoolManagementSystem.Controllers
+namespace SchoolManagementProject.Controllers
 {
     [Authorize(Roles = "Employee,Admin")]
 
@@ -95,10 +96,15 @@ namespace SchoolManagementSystem.Controllers
 
                     var student = await _converterHelper.ToStudentAsync(model, imageId, true);
                     await _studentRepository.CreateAsync(student);
-
-                    var user = await _userHelper.GetUserByIdAsync(model.UserId);
-                    await _userHelper.RemoveUserFromRoleAsync(user, "Pending");
-                    await _userHelper.AddUserToRoleAsync(user, "Student");
+                    if (!string.IsNullOrEmpty(model.UserId))
+                    {
+                        var user = await _userHelper.GetUserByIdAsync(model.UserId);
+                        if (user != null)
+                        {
+                            await _userHelper.RemoveUserFromRoleAsync(user, "Pending");
+                            await _userHelper.AddUserToRoleAsync(user, "Student");
+                        }
+                    }
 
                     TempData["SuccessMessage"] = "Student created successfully.";
                     return RedirectToAction(nameof(Index));

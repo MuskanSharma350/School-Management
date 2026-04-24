@@ -1,14 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace SchoolManagementSystem.Models
+namespace SchoolManagementProject.Models
 {
     public class Student : IEntity
     {
         public int Id { get; set; }
 
-        public string UserId { get; set; }
-        public User User { get; set; }
+        public string? UserId { get; set; }
+        public User? User { get; set; }
 
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "First Name is required")]

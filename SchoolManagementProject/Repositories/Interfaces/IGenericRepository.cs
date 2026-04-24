@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.Repositories
+﻿namespace SchoolManagementProject.Repositories
 {
     public interface IGenericRepository<T> where T : class
     {

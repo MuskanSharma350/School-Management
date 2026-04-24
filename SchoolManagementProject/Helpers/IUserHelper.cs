@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using SchoolManagementSystem.Models;
+using SchoolManagementProject.Models;
+using SchoolManagementProject.ViewModels;
+using SchoolManagementProject.Models;
 
-namespace SchoolManagementSystem.Helpers
+namespace SchoolManagementProject.Helpers
 {
     public interface IUserHelper
     {
