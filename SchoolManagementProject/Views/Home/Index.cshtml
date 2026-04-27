@@ -38,14 +38,14 @@
         border-radius: 50px;
     }
     #movetop {
-        display: none; /* Hidden by default */
+        display: none; 
         position: fixed;
         bottom: 20px;
         right: 30px;
         z-index: 99;
         border: none;
         outline: none;
-        background-color: #0d6efd; /* Your primary color */
+        background-color: #0d6efd; 
         color: white;
         cursor: pointer;
         padding: 15px;
@@ -60,9 +60,12 @@
         background-color: #0056b3;
         transform: scale(1.1);
     }
+    .homePage {
+    padding-top: 80px !important;
+}
 </style>
-<div class="container-fluid animate__animated animate__fadeIn">
-    <div class="row mt-4 mb-4">
+<div class="container-fluid animate__animated animate__fadeIn homePage">
+    <div class="row mt-4 mb-4 fix_div-hm">
         <div class="col-12">
             <div class="p-5 mb-4 bg-white shadow-sm" style="border-radius: 15px; border-left: 5px solid #4e73df;">
                 
@@ -80,7 +83,7 @@
                     </div>
                     <h5 class="fw-bold">My Dashboard</h5>
                     <p class="small text-muted">Access your main activity overview and schedules.</p>
-                    <a href="/" class="btn btn-outline-primary btn-sm rounded-pill px-4 mt-2">Open</a>
+                    <a href="/Dashboard/AdminDashboard" class="btn btn-outline-primary btn-sm rounded-pill px-4 mt-2">Open</a>
                 </div>
             </div>
         </div>
@@ -93,7 +96,7 @@
                     </div>
                     <h5 class="fw-bold">Account Settings</h5>
                     <p class="small text-muted">Manage your profile, password, and security settings.</p>
-                    <a href="/Account/Profile" class="btn btn-outline-success btn-sm rounded-pill px-4 mt-2">Manage</a>
+                    <a href="/Account/ChangeUser" class="btn btn-outline-success btn-sm rounded-pill px-4 mt-2">Manage</a>
                 </div>
             </div>
         </div>
