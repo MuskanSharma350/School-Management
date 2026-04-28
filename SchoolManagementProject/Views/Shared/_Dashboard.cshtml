@@ -86,7 +86,7 @@
             }
 
             <!-- Students Grades and Attendance-->
-            @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+            @if (User.IsInRole("Employee") || User.IsInRole("Admin") || User.IsInRole("Teacher"))
             {
                 <li>
                     <a href="/Students/Index" aria-label="Students" data-toggle="submenu"><i class="fas fa-user-graduate me-2"></i>Students</a>
