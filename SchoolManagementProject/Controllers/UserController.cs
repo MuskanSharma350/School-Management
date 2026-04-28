@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SchoolManagementProject.Data;
+using SchoolManagementProject.Helpers;
 using SchoolManagementProject.Models;
 using SchoolManagementProject.ViewModels;
 using System.Data;
@@ -17,11 +18,13 @@ namespace SchoolManagementProject.Controllers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<User> _signInManager;
-        public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager)
+        private readonly IUserHelper _userHelper;
+        public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager, IUserHelper userHelper)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
+            _userHelper = userHelper;
         }
         public async Task<IActionResult> Index()
         {
@@ -62,37 +65,32 @@ namespace SchoolManagementProject.Controllers
             {
                 var user = new User
                 {
-                    UserName = model.Email, 
+                    UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Address = model.Address,
-                    DateCreated = DateTime.Now 
+                    DateCreated = DateTime.UtcNow,
+                    EmailConfirmed = true
                 };
 
-                var result = await _userManager.CreateAsync(user, model.Password);
+                var result = await _userHelper.CreateUserWithProfileAsync(user, model.Password, model.Role);
 
                 if (result.Succeeded)
-                    {
-                        if (!string.IsNullOrEmpty(model.Role))
-                        {
-                            await _userManager.AddToRoleAsync(user, model.Role);
-                        }
-
-                        TempData["SuccessMessage"] = "User created successfully!";
-                        return RedirectToAction(nameof(Index));
-                    }
-
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
+                {
+                    TempData["SuccessMessage"] = $"User and {model.Role} profile created successfully!";
+                    return RedirectToAction(nameof(Index));
                 }
 
-                var roles = _roleManager.Roles.Select(r => r.Name).ToList();
-                ViewBag.Roles = new SelectList(roles);
-                return View(model);
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
             }
+
+            ViewBag.Roles = new SelectList(_roleManager.Roles, "Name", "Name", model.Role);
+            return View(model);
+        }
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null) return NotFound();

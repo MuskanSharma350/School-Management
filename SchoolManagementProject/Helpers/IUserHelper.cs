@@ -50,6 +50,6 @@ namespace SchoolManagementProject.Helpers
         Task UpdateUserDataByRoleAsync(User user);
 
         Task<Employee> GetEmployeeByUserAsync(string userEmail);
-
+        Task<IdentityResult> CreateUserWithProfileAsync(User user, string password, string role);
     }
 }

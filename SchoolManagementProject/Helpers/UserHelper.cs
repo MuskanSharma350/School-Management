@@ -194,7 +194,58 @@ namespace SchoolManagementProject.Helpers
 
             return await _employeeRepository.GetEmployeeByUserIdAsync(user.Id);
         }
+        public async Task<IdentityResult> CreateUserWithProfileAsync(User user, string password, string role)
+        {
+            var result = await _userManager.CreateAsync(user, password);
+            if (!result.Succeeded) return result;
 
+            await _userManager.AddToRoleAsync(user, role);
+
+            switch (role)
+            {
+                case "Student":
+                    var student = new Student
+                    {
+                        UserId = user.Id,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        EnrollmentDate = DateTime.UtcNow,
+                        Status = StudentStatus.Active 
+                    };
+                    await _studentRepository.CreateAsync(student);
+                    break;
+
+                case "Teacher":
+                    var teacher = new Teacher
+                    {
+                        UserId = user.Id,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        HireDate = DateTime.UtcNow,
+                        Status = TeacherStatus.Active
+                    };
+                    await _teacherRepository.CreateAsync(teacher);
+                    break;
+
+                case "Employee":
+                    var employee = new Employee
+                    {
+                        UserId = user.Id,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        HireDate = DateTime.UtcNow,
+                        Status = EmployeeStatus.Active
+                    };
+                    await _employeeRepository.CreateAsync(employee);
+                    break;
+
+                case "Pending":
+                    await NotifyAdministrativeEmployeesPendingUserAsync(user);
+                    break;
+            }
+
+            return IdentityResult.Success;
+        }
 
     }
 }
